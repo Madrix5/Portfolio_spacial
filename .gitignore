@@ -1,41 +1,65 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# =====================================================================
+# 🚀 BLINDAJE DEL REPOSITORIO (Next.js / Node.js / React)
+# =====================================================================
 
-# dependencies
+# 1. Dependencias (El agujero negro de peso)
 /node_modules
 /.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+.pnp.js
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
+# 2. Archivos de entorno y Secretos (¡CRÍTICO!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 *.pem
 
-# debug
+# 3. Next.js y Build de Producción
+/.next/
+/out/
+/build
+.tsbuildinfo
+
+# 4. Logs y depuración
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 .pnpm-debug.log*
+*.log
 
-# env files (can opt-in for committing if needed)
-.env*
+# 5. Archivos del Sistema Operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# vercel
-.vercel
+# 6. Cachés y herramientas de desarrollo
+.eslintcache
+.stylelintcache
+.npm/
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# 7. Editores de Código (IDE)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 8. Testing / Cobertura
+/coverage
+
+# 9. Vercel (Archivos temporales de despliegue)
+.vercel/
