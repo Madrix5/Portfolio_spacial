@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tu Nombre | Software Engineer",
-  description: "Desarrollador de software construyendo sistemas terrestres para misiones en el espacio.",
+  title: "jimdev | Software Engineer Portfolio",
+  description: "Portafolio de Adrián Jiménez, especializado en ingeniería de software, IA y desarrollo de sistemas críticos.",
+  keywords: ["Software Engineer", "Python", "React", "IA", "Ingeniería Informática", "jimdev"],
+  authors: [{ name: "Adrián Jiménez" }],
+  openGraph: {
+    title: "jimdev | Software Engineer",
+    description: "Explora la bitácora de vuelo y el stack técnico de Adrián Jiménez.",
+    url: "https://mi-portfolio-spacial.vercel.app", // Usa tu URL real
+    siteName: "jimdev Portfolio",
+    images: [
+      {
+        url: "/og-image.png", // Puedes crear una imagen luego y ponerla en public
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "jimdev | Software Engineer",
+    description: "Sistemas operativos y desarrollo web moderno.",
+  },
 };
-
-// ESTA ES LA LÍNEA QUE NEXT.JS ESTÁ BUSCANDO:
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="es" className="scroll-smooth">
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <Navbar />
-        <main className="grow container mx-auto px-4 py-8 pt-24">
-          {children}
-        </main>
-        <Footer />
-      </body>
-    </html>
-  );
-}
