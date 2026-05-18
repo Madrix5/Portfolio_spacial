@@ -28,7 +28,7 @@ export default function Hero() {
 
                 {/* BOTÓN ACTUALIZADO: Manual de Operaciones (CV) */}
                 <a
-                    href="/manual-operaciones.pdf"
+                    href="/CV.pdf"
                     download="CV_Adrian_Jimenez.pdf"
                     className="px-8 py-3.5 rounded-md bg-panel-blue border border-telemetry-gray/30 text-star-white font-semibold hover:border-apollo-cyan transition-colors flex items-center gap-2 shadow-[0_0_10px_rgba(0,229,255,0.05)]"
                 >

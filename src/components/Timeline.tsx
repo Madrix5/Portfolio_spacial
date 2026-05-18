@@ -11,18 +11,6 @@ const history = [
         institution: "Universidad",
         description: "Estudio de fundamentos teóricos y leyes físicas. Actualmente en pausa para priorizar el desarrollo de ingeniería de software."
     },
-    {
-        year: "2025",
-        title: "Sistemas de Operación",
-        institution: "Mérida Lucena Raúl",
-        description: "Optimización de flujos de trabajo y gestión de recursos en entornos de alta demanda (131 días)[cite: 45]."
-    },
-    {
-        year: "2021 - 2022",
-        title: "Especialista en Logística",
-        institution: "IKEA Ibérica",
-        description: "Gestión de operaciones y experiencia de usuario en entorno de alto volumen (223 días)[cite: 45]."
-    }
 ];
 
 export default function Timeline() {
