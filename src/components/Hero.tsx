@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import React from 'react';
 import SpaceScene from './SpaceScene';
 
 export default function Hero() {
@@ -6,10 +6,8 @@ export default function Hero() {
         <section className="min-h-[85vh] flex items-center bg-deep-space relative overflow-hidden py-12">
             <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-                {/* BLOQUE DE DATOS E INTRODUCCIÓN */}
                 <div className="space-y-6 z-10">
-                    <p className="font-mono text-xs uppercase tracking-widest text-orbit-orange">
-                    </p>
+                    <p className="font-mono text-xs uppercase tracking-widest text-orbit-orange"></p>
                     <h1 className="text-4xl md:text-6xl font-bold text-star-white tracking-tight">
                         Hola, soy <span className="text-transparent bg-clip-text bg-linear-to-r from-apollo-cyan to-nebula-purple">Adrián Jiménez</span>
                     </h1>
@@ -30,7 +28,6 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {/* BLOQUE VISUAL: GALAXIA Y AGUJERO NEGRO */}
                 <div className="flex justify-center items-center z-10">
                     <SpaceScene />
                 </div>

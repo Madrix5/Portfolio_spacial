@@ -3,10 +3,9 @@ import React from 'react';
 import { Reveal } from "./Reveal";
 import {
     SiPython, SiJavascript, SiTypescript, SiReact,
-    SiDjango, SiFlask, SiPandas, SiGit, SiGithub, SiTailwindcss, SiHtml5, SiCss, SiCplusplus
+    SiDjango, SiFlask, SiPandas, SiGithub, SiTailwindcss, SiHtml5, SiCss, SiCplusplus
 } from "react-icons/si";
 
-// Mapeo de tecnologías con sus iconos oficiales y colores de marca al hacer hover
 const skills = [
     { name: "Python", icon: <SiPython />, color: "hover:text-[#3776AB] hover:border-[#3776AB]/50" },
     { name: "TypeScript", icon: <SiTypescript />, color: "hover:text-[#3178C6] hover:border-[#3178C6]/50" },
@@ -28,12 +27,10 @@ export default function Skills() {
             <Reveal>
                 <div className="max-w-4xl mx-auto px-6">
 
-                    {/* CABECERA UNIFICADA 03 */}
                     <h2 className="text-3xl font-bold text-star-white mb-12 flex items-center gap-4 tracking-tight">
                         <span className="text-apollo-cyan font-mono text-xl">03.</span> Stack de Operaciones
                     </h2>
 
-                    {/* CUADRÍCULA DE ICONOS */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                         {skills.map((skill, index) => (
                             <div

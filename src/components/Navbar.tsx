@@ -12,8 +12,8 @@ export default function Navbar() {
                     </span>
                 </Link>
                 <div className="hidden md:flex gap-8 text-sm font-medium text-telemetry-gray">
-                    <Link href="#proyectos" className="hover:text-apollo-cyan transition-colors">Proyectos</Link>
                     <Link href="#sobre-mi" className="hover:text-apollo-cyan transition-colors">Sobre mí</Link>
+                    <Link href="#proyectos" className="hover:text-apollo-cyan transition-colors">Proyectos</Link>
                     <Link href="#contacto" className="hover:text-apollo-cyan transition-colors">Contacto</Link>
                 </div>
             </div>

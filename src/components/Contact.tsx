@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const REGEX = {
     name: /^[a-zA-ZÀ-ÿ\s]{3,50}$/,
@@ -11,15 +11,13 @@ export default function Contact() {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [isValid, setIsValid] = useState({ name: false, email: false, message: false });
     const [isTouched, setIsTouched] = useState({ name: false, email: false, message: false });
-    const [isFormValid, setIsFormValid] = useState(false);
 
     // Estados de envío
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-    useEffect(() => {
-        setIsFormValid(isValid.name && isValid.email && isValid.message);
-    }, [isValid]);
+    // SOLUCIÓN LINTER: Calculamos el estado derivado directamente sin useEffect
+    const isFormValid = isValid.name && isValid.email && isValid.message;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -54,10 +52,11 @@ export default function Contact() {
                 setSubmitStatus('error');
             }
         } catch (error) {
+            // SOLUCIÓN LINTER: Usamos la variable error para loguear en consola
+            console.error("Fallo en los sistemas de comunicación:", error);
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
-            // Resetear el mensaje de éxito/error después de unos segundos
             setTimeout(() => setSubmitStatus('idle'), 5000);
         }
     };
@@ -82,7 +81,6 @@ export default function Contact() {
 
                     <form onSubmit={handleSubmit} className="space-y-6 flex flex-col">
 
-                        {/* Mensajes de Estado Integrados en el flujo (Sin 'absolute') */}
                         {submitStatus === 'success' && (
                             <div className="bg-emerald-500/20 border border-emerald-500 text-emerald-400 p-4 rounded text-center font-mono text-sm animate-pulse transition-all">
                                 &gt; TRANSMISIÓN COMPLETADA CON ÉXITO
