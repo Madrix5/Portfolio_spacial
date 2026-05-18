@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react"; // <-- 1. IMPORTAMOS EL MÓDULO DE TELEMETRÍA
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,11 +31,13 @@ export default function RootLayout({
     <html lang="es" className="scroll-smooth">
       <body className={`${inter.className} antialiased bg-deep-space text-star-white min-h-screen flex flex-col`}>
         <Navbar />
-        {/* SOLUCIÓN LINTER: Usamos 'grow' en lugar de 'flex-grow' */}
         <main className="grow">
           {children}
         </main>
         <Footer />
+        
+        {/* 2. INYECTAMOS EL COMPONENTE (Se ejecuta de forma invisible) */}
+        <Analytics />
       </body>
     </html>
   );
