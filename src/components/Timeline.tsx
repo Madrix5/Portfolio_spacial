@@ -23,7 +23,7 @@ export default function Timeline() {
                 <div className="space-y-8 border-l-2 border-panel-blue ml-4 pl-8 relative">
                     {history.map((item, index) => (
                         <div key={index} className="relative group">
-                            <div className="absolute -left-[41px] top-1 w-4 h-4 bg-deep-space border-2 border-nebula-purple rounded-full group-hover:bg-apollo-cyan transition-colors" />
+                            <div className="absolute -left-10.25 top-1 w-4 h-4 bg-deep-space border-2 border-nebula-purple rounded-full group-hover:bg-apollo-cyan transition-colors" />
                             <span className="text-xs font-mono text-orbit-orange uppercase tracking-widest">{item.year}</span>
                             <h3 className="text-xl font-bold text-star-white mt-1">{item.title}</h3>
                             <p className="text-sm text-apollo-cyan mb-2">{item.institution}</p>
