@@ -19,7 +19,7 @@ export default function Hero() {
                     </p>
                     <div className="pt-4 flex gap-4">
                         <a
-                            href="/manual-operaciones.pdf"
+                            href="/CV.pdf"
                             download="CV_Adrian_Jimenez.pdf"
                             className="px-6 py-3 border border-apollo-cyan text-apollo-cyan font-mono text-sm uppercase tracking-wider rounded bg-apollo-cyan/5 hover:bg-apollo-cyan hover:text-deep-space transition-all duration-300 shadow-[0_0_15px_rgba(0,229,255,0.1)]"
                         >
