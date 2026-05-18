@@ -1,67 +1,118 @@
-import Link from "next/link";
-import { projects } from "@/data/projects";
+"use client";
+import React from 'react';
+
+// Objeto con los proyectos
+const proyectos = [
+    {
+        id: 1,
+        title: "Stellar Simulation Engine",
+        status: "EN ÓRBITA", // Estado de la misión
+        statusColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+        description: "Motor de simulación estelar interactivo en tiempo real basado en máquinas de estado de React. Calcula ciclos de vida, supernovas, nebulosas y colapsos en agujeros negros según distribuciones probabilísticas.",
+        tech: ["React", "TypeScript", "Tailwind CSS", "SVG"],
+        github: "https://github.com/Madrix5",
+        demo: "https://mi-portfolio-spacial.vercel.app" // Tu link real
+    },
+    {
+        id: 2,
+        title: "AI Data Core Analyser",
+        status: "EN DESARROLLO",
+        statusColor: "text-orbit-orange bg-orbit-orange/10 border-orbit-orange/20",
+        description: "Script avanzado de telemetría y análisis de datos masivos. Diseñado para la limpieza, modelado y extracción de métricas operacionales críticas en entornos críticos de software.",
+        tech: ["Python", "Pandas", "Scikit-Learn", "Git"],
+        github: "https://github.com/Madrix5",
+        demo: null // Si no tiene demo en vivo, se oculta el botón automáticamente
+    },
+    {
+        id: 3,
+        title: "Terminal de Operaciones Web",
+        status: "COMPLETADO",
+        statusColor: "text-apollo-cyan bg-apollo-cyan/10 border-apollo-cyan/20",
+        description: "Plataforma web modular de alto rendimiento optimizada para la gestión de comunicaciones cifradas de extremo a extremo, integrando colas de peticiones seguras mediante APIs encapsuladas.",
+        tech: ["Next.js", "Zod", "Resend API", "Node.js"],
+        github: "https://github.com/Madrix5",
+        demo: "https://github.com/Madrix5"
+    }
+];
 
 export default function Missions() {
     return (
-        <section id="proyectos" className="max-w-5xl mx-auto py-24 px-4 w-full">
-            <div className="mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-star-white mb-4">
-                    <span className="text-nebula-purple">02.</span> Manifiesto de Misiones
+        <section id="proyectos" className="py-20 bg-deep-space">
+            <div className="max-w-6xl mx-auto px-6">
+
+                {/* CABECERA UNIFICADA 02 */}
+                <h2 className="text-3xl font-bold text-star-white mb-12 flex items-center gap-4 tracking-tight">
+                    <span className="text-apollo-cyan font-mono text-xl">02.</span> Manifiesto de Misiones
                 </h2>
-                <p className="text-telemetry-gray text-lg max-w-2xl">
-                    Proyectos desarrollados bajo estándares de alta ingeniería, enfocados en la resiliencia del software y la precisión matemática.
-                </p>
-            </div>
 
-            <div className="grid grid-cols-1 gap-8">
-                {projects.map((project) => (
-                    <div
-                        key={project.id}
-                        className={`group relative bg-panel-blue border border-telemetry-gray/10 rounded-xl p-8 hover:border-nebula-purple/50 transition-all overflow-hidden bg-linear-to-br ${project.color} to-transparent`}
-                    >
-                        <span className="absolute -right-4 -top-8 text-9xl font-black text-star-white/5 italic group-hover:text-nebula-purple/10 transition-colors">
-                            {project.id}
-                        </span>
-
-                        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                            <div className="grow max-w-2xl">
-                                <div className="text-apollo-cyan text-xs font-bold tracking-widest uppercase mb-2">
-                                    {project.category}
+                {/* CUADRÍCULA DE PROYECTOS (GRID RESPONSIVO) */}
+                {/* 1 columna en móvil, 2 en tablets, 3 en pantallas de escritorio */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {proyectos.map((proyecto) => (
+                        <div
+                            key={proyecto.id}
+                            className="border border-panel-blue bg-panel-blue/5 p-6 rounded-xl hover:border-apollo-cyan hover:bg-panel-blue/10 hover:shadow-[0_0_25px_rgba(0,229,255,0.05)] transition-all duration-300 group flex flex-col justify-between h-full relative overflow-hidden"
+                        >
+                            <div>
+                                {/* Cabecera de la tarjeta: Título y Estado */}
+                                <div className="flex justify-between items-start gap-4 mb-3">
+                                    <h3 className="text-xl font-bold text-star-white group-hover:text-apollo-cyan transition-colors tracking-tight">
+                                        {proyecto.title}
+                                    </h3>
+                                    <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${proyecto.statusColor} shrink-0`}>
+                                        {proyecto.status}
+                                    </span>
                                 </div>
-                                <h3 className="text-2xl font-bold text-star-white mb-4">
-                                    {project.title}
-                                </h3>
-                                <p className="text-telemetry-gray mb-6 leading-relaxed">
-                                    {project.description}
+
+                                {/* Descripción de la misión */}
+                                <p className="text-sm text-telemetry-gray leading-relaxed mb-6">
+                                    {proyecto.description}
                                 </p>
+                            </div>
+
+                            {/* Contenedor inferior fijado abajo (Tecnologías y Enlaces) */}
+                            <div>
+                                {/* Etiquetas de tecnologías */}
                                 <div className="flex flex-wrap gap-2 mb-6">
-                                    {project.tags.map((tag, i) => (
-                                        <span key={i} className="text-[10px] px-2 py-1 bg-deep-space border border-telemetry-gray/30 rounded text-telemetry-gray">
-                                            {tag}
+                                    {proyecto.tech.map((tech, i) => (
+                                        <span
+                                            key={i}
+                                            className="text-[10px] font-mono text-apollo-cyan bg-apollo-cyan/5 border border-apollo-cyan/10 px-2 py-0.5 rounded"
+                                        >
+                                            {tech}
                                         </span>
                                     ))}
                                 </div>
-                                <div className="flex items-center gap-2 text-xs text-orbit-orange font-mono">
-                                    <span className="w-2 h-2 rounded-full bg-orbit-orange animate-pulse"></span>
-                                    {project.status}
+
+                                {/* Enlaces operativos */}
+                                <div className="flex items-center gap-4 pt-3 border-t border-panel-blue/50 font-mono text-xs">
+                                    <a
+                                        href={proyecto.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-telemetry-gray hover:text-star-white transition-colors"
+                                    >
+                                        &gt; CODE_BASE
+                                    </a>
+
+                                    {/* Renderizado condicional: Solo muestra el botón LIVE_DEMO si el link existe */}
+                                    {proyecto.demo && (
+                                        <a
+                                            href={proyecto.demo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-orbit-orange hover:text-orange-400 transition-colors ml-auto"
+                                        >
+                                            LAUNCH_MISSION &rarr;
+                                        </a>
+                                    )}
                                 </div>
                             </div>
 
-                            <div className="flex flex-col gap-3 min-w-40">
-                                {/* Aquí hemos cambiado el botón por un Link de Next.js */}
-                                <Link
-                                    href={`/proyectos/${project.slug}`}
-                                    className="px-6 py-2.5 bg-nebula-purple text-star-white text-center text-sm font-bold rounded hover:bg-opacity-80 transition-all"
-                                >
-                                    Ver Detalles
-                                </Link>
-                                <a href="#" className="px-6 py-2.5 border border-telemetry-gray/30 text-star-white text-center text-sm font-bold rounded hover:border-apollo-cyan transition-all">
-                                    Código Fuente
-                                </a>
-                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+
             </div>
         </section>
     );

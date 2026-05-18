@@ -1,47 +1,56 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-// Inicializamos el servicio de correo con tu clave de entorno
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json();
 
-    // 1. Envío de Correo Electrónico hacia adrian.jimdev@gmail.com
-    const emailResult = await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>", // Cambiar por tu dominio verificado en el futuro
-      to: "adrian.jimdev@gmail.com",
-      subject: `🚀 Nueva Misión de: ${name}`,
+    // 1. Preparar carga útil para WhatsApp (CallMeBot)
+    // Usamos %0A para los saltos de línea en la URL
+    const waMessage = `*NUEVA MISION (jimdev)*%0A*Identificador:* ${name}%0A*Frecuencia:* ${email}%0A*Datos:* ${message}`;
+    const waUrl = `https://api.callmebot.com/whatsapp.php?phone=${process.env.WHATSAPP_NUMBER}&text=${waMessage}&apikey=${process.env.CALLMEBOT_APIKEY}`;
+
+    // 2. Preparar carga útil para Email (Resend)
+    // Nota: Hasta que no verifiques un dominio en Resend, el remitente debe ser "onboarding@resend.dev"
+    const resendBody = {
+      from: "jimdev Terminal <onboarding@resend.dev>",
+      to: [process.env.CONTACT_EMAIL || "adrian.jimdev@gmail.com"],
+      subject: `Nueva Transmisión de: ${name}`,
       html: `
-        <h2>Transmisión recibida desde la Terminal Web</h2>
-        <p><strong>Nombre del remitente:</strong> ${name}</p>
-        <p><strong>Email de conexión:</strong> ${email}</p>
-        <p><strong>Carga útil (Mensaje):</strong></p>
-        <p style="background: #f4f4f4; padding: 15px; border-radius: 5px;">${message}</p>
-      `,
-    });
+        <div style="font-family: monospace; background-color: #0A0A16; color: #00E5FF; padding: 20px;">
+          <h2>// ALERTA DE SISTEMA: NUEVA TRANSMISIÓN</h2>
+          <p><strong>IDENTIFICADOR:</strong> ${name}</p>
+          <p><strong>FRECUENCIA (EMAIL):</strong> ${email}</p>
+          <hr style="border-color: #00E5FF;" />
+          <p><strong>PAQUETE DE DATOS:</strong></p>
+          <p style="color: #A0ABC0;">${message}</p>
+        </div>
+      `
+    };
 
-    if (emailResult.error) {
-      console.error("Error en módulo de correo:", emailResult.error);
-    }
+    // 3. Ejecutar ambas transmisiones de forma paralela
+    const [resendRes, waRes] = await Promise.all([
+      fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
+        },
+        body: JSON.stringify(resendBody)
+      }),
+      fetch(waUrl) // CallMeBot usa una simple petición GET
+    ]);
 
-    // 2. Envío de Alerta de WhatsApp hacia tu teléfono (+34601243028)
-    // El texto se codifica para cumplir con los estándares de URL (encodeURIComponent)
-    const textForWhatsApp = `🚀 *Nueva Misión Recibida*\n\n*Nombre:* ${name}\n*Mensaje:* ${message}`;
-    const whatsappApiKey = process.env.WHATSAPP_API_KEY; 
-    const phoneNumber = "+34601243028";
+    // Verificación de errores en los logs del servidor
+    if (!resendRes.ok) console.error("Error en Resend:", await resendRes.text());
+    if (!waRes.ok) console.error("Error en CallMeBot:", await waRes.text());
 
-    if (whatsappApiKey) {
-      const whatsappUrl = `https://api.callmebot.com/whatsapp.php?phone=${phoneNumber}&text=${encodeURIComponent(textForWhatsApp)}&apikey=${whatsappApiKey}`;
-      
-      // Lanzamos la petición de forma asíncrona al bot
-      await fetch(whatsappUrl).catch(err => console.error("Fallo de envío a WhatsApp Gateway:", err));
-    }
-
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({ success: true, message: "Transmisión completada." });
 
   } catch (error) {
-    return NextResponse.json({ error: "Fallo general en procesamiento central." }, { status: 500 });
+    console.error("Fallo crítico en API de contacto:", error);
+    return NextResponse.json(
+      { success: false, message: "Fallo en los sistemas de comunicación." }, 
+      { status: 500 }
+    );
   }
 }

@@ -1,25 +1,36 @@
+import React from 'react';
+
 const history = [
     {
         year: "2025 - Presente",
-        title: "Ingeniería Informática + IA",
-        institution: "UNIR / Fundación Esplai",
-        description: "Desarrollo de software y especialización en Python e IA. Enfoque en sistemas críticos y arquitecturas modernas."
+        title: "Grado en Ingeniería Informática",
+        institution: "UNIR",
+        description: "Estudio de fundamentos de la computación, estructuras de datos, algoritmos y diseño de sistemas críticos de software."
+    },
+    {
+        year: "2026 - Presente",
+        title: "FOAP Nivel 3: Desarrollo Integral",
+        institution: "Fundación Esplai",
+        description: "Especialización técnica intensiva en Bases de Datos, Python, Programación Web e Inteligencia Artificial."
     },
     {
         year: "Pausado",
         title: "Grado en Física",
         institution: "Universidad",
         description: "Estudio de fundamentos teóricos y leyes físicas. Actualmente en pausa para priorizar el desarrollo de ingeniería de software."
-    },
+    }
 ];
 
 export default function Timeline() {
     return (
         <section id="sobre-mi" className="py-20 bg-deep-space">
             <div className="max-w-4xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-star-white mb-12 flex items-center gap-4">
-                    <span className="text-apollo-cyan font-mono text-xl">02.</span> Bitácora de Vuelo
+
+                {/* CABECERA UNIFICADA 01 */}
+                <h2 className="text-3xl font-bold text-star-white mb-12 flex items-center gap-4 tracking-tight">
+                    <span className="text-apollo-cyan font-mono text-xl">01.</span> Bitácora de Vuelo
                 </h2>
+
                 <div className="space-y-8 border-l-2 border-panel-blue ml-4 pl-8 relative">
                     {history.map((item, index) => (
                         <div key={index} className="relative group">

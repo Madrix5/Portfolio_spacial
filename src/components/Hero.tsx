@@ -1,44 +1,41 @@
+import Link from 'next/link';
+import SpaceScene from './SpaceScene';
+
 export default function Hero() {
     return (
-        <section className="min-h-[85vh] flex flex-col justify-center items-start max-w-5xl mx-auto py-20 px-4">
+        <section className="min-h-[85vh] flex items-center bg-deep-space relative overflow-hidden py-12">
+            <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-panel-blue border border-nebula-purple/30 text-apollo-cyan text-sm font-medium mb-8">
-                <span className="w-2 h-2 rounded-full bg-orbit-orange animate-pulse"></span>
-                Sistemas online · Buscando nuevos desafíos
+                {/* BLOQUE DE DATOS E INTRODUCCIÓN */}
+                <div className="space-y-6 z-10">
+                    <p className="font-mono text-xs uppercase tracking-widest text-orbit-orange">
+                    </p>
+                    <h1 className="text-4xl md:text-6xl font-bold text-star-white tracking-tight">
+                        Hola, soy <span className="text-transparent bg-clip-text bg-linear-to-r from-apollo-cyan to-nebula-purple">Adrián Jiménez</span>
+                    </h1>
+                    <p className="text-xl font-mono text-apollo-cyan">
+                        &gt; Software Engineer in Training
+                    </p>
+                    <p className="text-telemetry-gray leading-relaxed text-base max-w-lg">
+                        Especializándome en Ingeniería Informática y arquitecturas de Inteligencia Artificial. Diseñando sistemas estables y optimizando código base para operaciones complejas en el espacio digital.
+                    </p>
+                    <div className="pt-4 flex gap-4">
+                        <a
+                            href="/manual-operaciones.pdf"
+                            download="CV_Adrian_Jimenez.pdf"
+                            className="px-6 py-3 border border-apollo-cyan text-apollo-cyan font-mono text-sm uppercase tracking-wider rounded bg-apollo-cyan/5 hover:bg-apollo-cyan hover:text-deep-space transition-all duration-300 shadow-[0_0_15px_rgba(0,229,255,0.1)]"
+                        >
+                            Descargar Manual (CV)
+                        </a>
+                    </div>
+                </div>
+
+                {/* BLOQUE VISUAL: GALAXIA Y AGUJERO NEGRO */}
+                <div className="flex justify-center items-center z-10">
+                    <SpaceScene />
+                </div>
+
             </div>
-
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-star-white mb-6 leading-tight">
-                Software Engineer construyendo <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-nebula-purple to-apollo-cyan">
-                    sistemas terrestres para el espacio.
-                </span>
-            </h1>
-
-            <p className="text-telemetry-gray text-lg md:text-xl max-w-3xl leading-relaxed mb-10">
-                Soy un desarrollador junior apasionado por unir el análisis de datos, la inteligencia artificial y el desarrollo de plataformas web fiables. Mi objetivo técnico es aplicar el rigor del software crítico para vuelos espaciales en aplicaciones modernas de consumo.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-                <a
-                    href="#proyectos"
-                    className="px-8 py-3.5 rounded-md bg-nebula-purple text-star-white font-semibold hover:bg-opacity-80 transition-all shadow-[0_0_15px_rgba(124,77,255,0.3)]"
-                >
-                    Iniciar Secuencia de Proyectos
-                </a>
-
-                {/* BOTÓN ACTUALIZADO: Manual de Operaciones (CV) */}
-                <a
-                    href="/CV.pdf"
-                    download="CV_Adrian_Jimenez.pdf"
-                    className="px-8 py-3.5 rounded-md bg-panel-blue border border-telemetry-gray/30 text-star-white font-semibold hover:border-apollo-cyan transition-colors flex items-center gap-2 shadow-[0_0_10px_rgba(0,229,255,0.05)]"
-                >
-                    <svg className="w-4 h-4 text-apollo-cyan" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16v1a3 3 0 003 3h12a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Descargar Manual de Operaciones
-                </a>
-            </div>
-
         </section>
     );
 }
