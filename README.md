@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Jimdev Space Portfolio
 
-## Getting Started
+Portafolio profesional interactivo desarrollado por **Adrián Jiménez**. Diseñado bajo una arquitectura moderna centrada en el rendimiento, la escalabilidad y una experiencia de usuario inmersiva.
 
-First, run the development server:
+[🇪🇸 Español](#-español) | [🇬🇧 English](#-english) | [🇩🇪 Deutsch](#-deutsch)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🇪🇸 Español
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🌐 Acceso al Proyecto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Puedes visualizar la plataforma en tiempo real aquí: [https://portfolio-spacial.vercel.app/](https://portfolio-spacial.vercel.app/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🛠️ Stack Tecnológico
 
-## Learn More
+* **Framework:** Next.js (App Router)
+* **Librería Core:** React
+* **Estilos:** Tailwind CSS
+* **Despliegue:** Vercel
 
-To learn more about Next.js, take a look at the following resources:
+### 🌌 Arquitectura Destacada
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+El motor de la plataforma utiliza un componente de renderizado dinámico (`SpaceScene.tsx`) optimizado mediante `window.requestAnimationFrame`, asegurando una experiencia fluida.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🇬🇧 English
 
-## Deploy on Vercel
+### 🌐 Project Access
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can view the live platform here: [https://portfolio-spacial.vercel.app/](https://portfolio-spacial.vercel.app/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🛠️ Tech Stack
+
+* **Framework:** Next.js (App Router)
+* **Core Library:** React
+* **Styling:** Tailwind CSS
+* **Deployment:** Vercel
+
+### 🌌 Featured Architecture
+
+The platform's engine uses a dynamic rendering component (`SpaceScene.tsx`) optimized via `window.requestAnimationFrame`, ensuring a smooth experience.
+
+## 🇩🇪 Deutsch
+
+### 🌐 Projekt-Zugriff
+
+Du kannst die Live-Plattform hier ansehen: [https://portfolio-spacial.vercel.app/](https://portfolio-spacial.vercel.app/)
+
+### 🛠️ Tech-Stack
+
+* **Framework:** Next.js (App Router)
+* **Core-Bibliothek:** React
+* **Styling:** Tailwind CSS
+* **Deployment:** Vercel
+
+### 🌌 Architektur-Highlight
+
+Die Engine der Plattform nutzt eine dynamische Rendering-Komponente (`SpaceScene.tsx`), die mittels `window.requestAnimationFrame` optimiert wurde, um ein flüssiges Erlebnis zu gewährleisten.
