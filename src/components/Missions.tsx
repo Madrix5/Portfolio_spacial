@@ -4,23 +4,23 @@ import React from 'react';
 const proyectos = [
     {
         title: "CV Interactivo & Asistente IA",
-        description: "Aplicación web dinámica que transforma el currículum tradicional en una interfaz interactiva. Integra un chatbot conversacional entrenado exclusivamente con mi historial para permitir a los reclutadores realizar minientrevistas en tiempo real.",
-        tech: ["Next.js", "React", "IA / LLMs", "TailwindCSS"],
-        repo: "https://github.com/Madrix5/portfolio_spacial",
-        demo: "https://mi-portfolio-spacial.vercel.app"
+        description: "Aplicación web dinámica que transforma el currículum tradicional en una interfaz interactiva. Integra un chatbot conversacional. (El acceso al código fuente y a la transmisión en vivo se encuentra actualmente restringido por un contrato de confidencialidad).",
+        tech: ["HTML5", "CSS3", "Vanilla JS", "IA / LLMs"],
+        repo: null,
+        demo: null
     },
     {
         title: "Analizador Matricial de Alto Rendimiento",
-        description: "Software por terminal enfocado en la resolución matemática exhaustiva de matrices complejas. Desarrollado optimizando la gestión de memoria de bajo nivel para procesar estructuras de datos masivas.",
+        description: "Software por terminal enfocado en la resolución matemática exhaustiva de matrices complejas. Desarrollado optimizando la gestión de memoria de bajo nivel. (Entorno gráfico actualmente en fase de desarrollo).",
         tech: ["C (Nativo)", "Algoritmia", "Gestión de Memoria", "Linux/Bash"],
-        repo: "https://github.com/Madrix5",
+        repo: "https://github.com/Madrix5/res_matrix",
         demo: null
     },
     {
         title: "Benchmark de Algoritmos (Datasets CSV)",
-        description: "Herramienta de procesamiento lógico encargada de la ingesta y ordenación de grandes volúmenes de datos estructurados. Realiza pruebas empíricas comparando múltiples algoritmos para determinar el más óptimo.",
+        description: "Herramienta de procesamiento lógico encargada de la ingesta y ordenación de grandes volúmenes de datos estructurados. Realiza pruebas empíricas comparando múltiples algoritmos. (Entorno gráfico actualmente en fase de desarrollo).",
         tech: ["C (Nativo)", "Estructuras de Datos", "Data Processing"],
-        repo: "https://github.com/Madrix5",
+        repo: "https://github.com/Madrix5/OrderAnalyst",
         demo: null
     }
 ];
@@ -69,16 +69,21 @@ export default function Missions() {
 
                             {/* Botones de Acción */}
                             <div className="flex gap-4 pt-4 border-t border-panel-blue/50">
-                                <a
-                                    href={proyecto.repo}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-sm font-mono text-star-white hover:text-apollo-cyan transition-colors flex items-center gap-2"
-                                >
-                                    [ Código Fuente ]
-                                </a>
+                                {proyecto.repo ? (
+                                    <a
+                                        href={proyecto.repo}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm font-mono text-star-white hover:text-apollo-cyan transition-colors flex items-center gap-2"
+                                    >
+                                        [ Código Fuente ]
+                                    </a>
+                                ) : (
+                                    <span className="text-sm font-mono text-red-400/70 flex items-center gap-2 cursor-not-allowed">
+                                        [ Acceso Restringido (NDA) ]
+                                    </span>
+                                )}
 
-                                {/* Renderizado condicional: Solo se muestra si demo no es null */}
                                 {proyecto.demo && (
                                     <a
                                         href={proyecto.demo}
